@@ -1,6 +1,6 @@
 import { connectToDatabase } from "@/db/mongodb";
 import PlayerModel from "@/app/models/PlayerShema";
-
+import User from "@/app/models/schema";
 
 
 export async function GET() {
@@ -11,7 +11,9 @@ export async function GET() {
     await connectToDatabase();
 
     // Consulta todos los jugadores
-    const players = await PlayerModel.find();
+    // const players = await PlayerModel.find();
+
+    const players = await User.find();
 
     // Devuelve la lista de jugadores como respuesta
     return new Response(JSON.stringify(players), {
@@ -29,7 +31,8 @@ export async function POST(request: Request) {
     const data = await request.json();
 
     // Crea un nuevo jugador
-    const player = await PlayerModel.create(data);
+    // const player = await PlayerModel.create(data);
+    const player = await User.create(data);
 
     // Devuelve el nuevo jugador creado como respuesta
     return new Response(JSON.stringify(player), {
