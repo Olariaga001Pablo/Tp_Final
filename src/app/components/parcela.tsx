@@ -36,7 +36,8 @@ export default function Parcela({ estado }: ParcelaProps, {pos} : ParcelaProps) 
             break;
     }
     const handleClick = () => {
-        setOpen(true);
+        if(Estado !== "Urbano"){
+        setOpen(true);}
     };
 
     const handleGranja = () => {
